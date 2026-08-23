@@ -5,7 +5,6 @@
   "author": "Ju Ho Nam <jhnamnam@gmail.com> (https://juhonamnam.github.io/)",
   "license": "MIT",
   "private": true,
-  //"homepage": "https://juhonamnam.github.io/wedding-invitation", Ref
   "homepage": "https://github.com/ANdam5/Wedding_Invitation",
   "type": "module",
   "scripts": {
