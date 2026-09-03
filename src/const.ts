@@ -32,7 +32,7 @@ export const HOLIDAYS = [1]
 /**
  * 예식 장소 명칭
  */
-export const LOCATION = "국방컨벤션"
+export const LOCATION = "국방컨벤션 에메랄드홀"
 
 /**
  * 예식 장소 상세 주소
@@ -68,11 +68,11 @@ export const NMAP_PLACE_ID = 13353325
 export const KMAP_PLACE_ID = 152313844
 
 // 신부 정보 설정
-export const BRIDE_FULLNAME = "ABC"
-export const BRIDE_FIRSTNAME = "BC"
+export const BRIDE_FULLNAME = "채은아"
+export const BRIDE_FIRSTNAME = "은아"
 export const BRIDE_TITLE = "차녀"
-export const BRIDE_FATHER = "아버지"
-export const BRIDE_MOTHER = "어머니"
+export const BRIDE_FATHER = "채춘희"
+export const BRIDE_MOTHER = "이혜숙"
 
 /**
  * 신부측 연락처 및 계좌 정보
@@ -81,29 +81,29 @@ export const BRIDE_INFO = [
   {
     relation: "신부",
     name: BRIDE_FULLNAME,
-    phone: "010-0000-0000",
-    account: "우리은행 0000000000000",
+    phone: "010-9935-7424",
+    account: "카카오뱅크 3333063498315",
   },
   {
     relation: "신부 아버지",
     name: BRIDE_FATHER,
-    phone: "010-0000-0000",
-    account: "하나은행 00000000000",
+    phone: "010-9667-7424",
+    account: "국민은행 48260201303502",
   },
   {
     relation: "신부 어머니",
     name: BRIDE_MOTHER,
-    phone: "010-0000-0000",
-    account: "하나은행 00000000000000",
+    phone: "010-9967-7424",
+    account: "국민은행 081010385531",
   },
 ]
 
 // 신랑 정보 설정
-export const GROOM_FULLNAME = "ABC"
-export const GROOM_FIRSTNAME = "BC"
+export const GROOM_FULLNAME = "홍창완"
+export const GROOM_FIRSTNAME = "창완"
 export const GROOM_TITLE = "차남"
-export const GROOM_FATHER = "아버지"
-export const GROOM_MOTHER = "어머니"
+export const GROOM_FATHER = "홍순국"
+export const GROOM_MOTHER = "송은영"
 
 /**
  * 신랑측 연락처 및 계좌 정보
@@ -112,19 +112,19 @@ export const GROOM_INFO = [
   {
     relation: "신랑",
     name: GROOM_FULLNAME,
-    phone: "010-0000-0000",
-    account: "하나은행 00000000000000",
+    phone: "010-8697-2705",
+    account: "우리은행 1002756593951",
   },
   {
     relation: "신랑 아버지",
     name: GROOM_FATHER,
-    phone: "010-0000-0000",
-    account: "신한은행 000000000000",
+    phone: "010-3748-2705",
+    account: "Need Modify",
   },
   {
     relation: "신랑 어머니",
     name: GROOM_MOTHER,
-    phone: "010-0000-0000",
-    account: "국민은행 000000000000",
+    phone: "010-7551-2705",
+    account: "Need Modify",
   },
 ]

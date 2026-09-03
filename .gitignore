@@ -4,6 +4,9 @@
 # production
 /build
 
+# large design archives
+Data/*.zip
+
 # misc
 .DS_Store
 .env.local

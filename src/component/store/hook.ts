@@ -50,19 +50,33 @@ export const useKakao = () => {
       return
     }
 
-    // 스크립트가 아직 로드되지 않았으면 동적으로 추가
-    if (!document.querySelector(`script[src="${KAKAO_SDK_URL}"]`)) {
-      const script = document.createElement("script")
-      script.addEventListener("load", () => {
-        // 카카오 SDK 초기화
-        if (!(window as any).Kakao.isInitialized()) {
-          ;(window as any).Kakao.init(KAKAO_SDK_JS_KEY)
-        }
-        setKakao((window as any).Kakao)
-      })
+    const initializeKakao = () => {
+      const kakaoSdk = (window as any).Kakao
+      if (!kakaoSdk) {
+        return
+      }
+      if (!kakaoSdk.isInitialized()) {
+        kakaoSdk.init(KAKAO_SDK_JS_KEY)
+      }
+      setKakao(kakaoSdk)
+    }
+
+    // SDK가 이미 로드된 경우에는 스크립트를 다시 추가하지 않습니다.
+    if ((window as any).Kakao) {
+      initializeKakao()
+      return
+    }
+
+    let script = document.querySelector<HTMLScriptElement>(
+      `script[src="${KAKAO_SDK_URL}"]`,
+    )
+    if (!script) {
+      script = document.createElement("script")
       script.src = KAKAO_SDK_URL
       document.head.appendChild(script)
     }
+
+    script.addEventListener("load", initializeKakao, { once: true })
   }, [setKakao])
 
   return kakao
