@@ -70,7 +70,7 @@ export const KMAP_PLACE_ID = 152313844
 // 신부 정보 설정
 export const BRIDE_FULLNAME = "채은아"
 export const BRIDE_FIRSTNAME = "은아"
-export const BRIDE_TITLE = "차녀"
+export const BRIDE_TITLE = "장녀"
 export const BRIDE_FATHER = "채춘희"
 export const BRIDE_MOTHER = "이혜숙"
 
@@ -87,7 +87,7 @@ export const BRIDE_INFO = [
   {
     relation: "신부 아버지",
     name: BRIDE_FATHER,
-    phone: "010-9667-7424",
+    phone: "010-9669-7424",
     account: "국민은행 48260201303502",
   },
   {
@@ -101,7 +101,7 @@ export const BRIDE_INFO = [
 // 신랑 정보 설정
 export const GROOM_FULLNAME = "홍창완"
 export const GROOM_FIRSTNAME = "창완"
-export const GROOM_TITLE = "차남"
+export const GROOM_TITLE = "장남"
 export const GROOM_FATHER = "홍순국"
 export const GROOM_MOTHER = "송은영"
 

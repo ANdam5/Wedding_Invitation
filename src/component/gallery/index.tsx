@@ -51,13 +51,13 @@ export const Gallery = () => {
   const modalState = useState(false)
   const carouselRef = useRef<HTMLDivElement>({} as HTMLDivElement)
 
-  useEffect(() => {
-    // 이미지 프리로드 (Preload)
-    GALLERY_IMAGES.forEach((image) => {
-      const img = new Image()
-      img.src = image
-    })
-  }, [])
+  // useEffect(() => {
+  //   // 이미지 프리로드 (Preload)
+  //   GALLERY_IMAGES.forEach((image) => {
+  //     const img = new Image()
+  //     img.src = image
+  //   })
+  // }, [])
 
   // 슬라이드 인덱스 상태
   const [slide, _setSlide] = useState(0)
