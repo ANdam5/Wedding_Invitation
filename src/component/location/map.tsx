@@ -11,7 +11,7 @@ import {
   NMAP_PLACE_ID,
   WEDDING_HALL_POSITION,
 } from "../../const"
-import { NAVER_MAP_CLIENT_ID } from "../../env"
+import locationImage from "./location.JPG"
 
 /**
  * 지도를 표시하고 길찾기 앱(네이버, 카카오, 티맵) 연동 기능을 제공하는 컴포넌트입니다.
@@ -19,14 +19,13 @@ import { NAVER_MAP_CLIENT_ID } from "../../env"
  * @returns {JSX.Element} 지도 컴포넌트
  */
 export const Map = () => {
-  // 네이버 지도 클라이언트 ID가 설정되어 있을 때만 지도를 렌더링합니다.
-  return NAVER_MAP_CLIENT_ID ? <NaverMap /> : <div>Map is not available</div>
+  return <NaverMap staticMap={!locationImage} />
 }
 
 /**
  * 네이버 지도를 실제로 렌더링하는 내부 컴포넌트입니다.
  */
-const NaverMap = () => {
+const NaverMap = ({ staticMap = false }: { staticMap?: boolean }) => {
   const naver = useNaver()
   const kakao = useKakao()
   const ref = useRef<HTMLDivElement>(null)
@@ -52,13 +51,13 @@ const NaverMap = () => {
 
   useEffect(() => {
     // 네이버 지도 SDK가 로드되면 지도를 초기화합니다.
-    if (naver) {
+    if (!staticMap && naver) {
       const map = new naver.maps.Map(ref.current, {
         center: new naver.maps.LatLng(
           WEDDING_HALL_POSITION[1],
           WEDDING_HALL_POSITION[0],
         ),
-        zoom: 17,
+        zoom: 15,
       })
 
       // 마커 추가
@@ -74,62 +73,72 @@ const NaverMap = () => {
         map.destroy()
       }
     }
-  }, [naver])
+  }, [naver, staticMap])
 
   return (
     <>
       <div className="map-wrapper">
-        {/* 잠금 상태일 때 오버레이 표시 */}
-        {locked && (
-          <div
-            className="lock"
-            onTouchStart={() => {
-              setShowLockMessage(true)
-              if (lockMessageTimeout.current !== null) {
-                clearTimeout(lockMessageTimeout.current)
-              }
-              lockMessageTimeout.current = window.setTimeout(
-                () => setShowLockMessage(false),
-                3000,
-              )
-            }}
-            onMouseDown={() => {
-              setShowLockMessage(true)
-              if (lockMessageTimeout.current !== null) {
-                clearTimeout(lockMessageTimeout.current)
-              }
-              lockMessageTimeout.current = window.setTimeout(
-                () => setShowLockMessage(false),
-                3000,
-              )
-            }}
-          >
-            {showLockMessage && (
-              <div className="lock-message">
-                <LockIcon /> 자물쇠 버튼을 눌러
-                <br />
-                터치 잠금 해제 후 확대 및 이동해 주세요.
+        {staticMap ? (
+          <img
+            className="map-image"
+            src={locationImage}
+            alt="예식장 위치 안내 지도"
+          />
+        ) : (
+          <>
+            {/* 잠금 상태일 때 오버레이 표시 */}
+            {locked && (
+              <div
+                className="lock"
+                onTouchStart={() => {
+                  setShowLockMessage(true)
+                  if (lockMessageTimeout.current !== null) {
+                    clearTimeout(lockMessageTimeout.current)
+                  }
+                  lockMessageTimeout.current = window.setTimeout(
+                    () => setShowLockMessage(false),
+                    3000,
+                  )
+                }}
+                onMouseDown={() => {
+                  setShowLockMessage(true)
+                  if (lockMessageTimeout.current !== null) {
+                    clearTimeout(lockMessageTimeout.current)
+                  }
+                  lockMessageTimeout.current = window.setTimeout(
+                    () => setShowLockMessage(false),
+                    3000,
+                  )
+                }}
+              >
+                {showLockMessage && (
+                  <div className="lock-message">
+                    <LockIcon /> 자물쇠 버튼을 눌러
+                    <br />
+                    터치 잠금 해제 후 확대 및 이동해 주세요.
+                  </div>
+                )}
               </div>
             )}
-          </div>
+
+            {/* 잠금 해제 버튼 */}
+            <button
+              className={"lock-button" + (locked ? "" : " unlocked")}
+              onClick={() => {
+                if (lockMessageTimeout.current !== null) {
+                  clearTimeout(lockMessageTimeout.current)
+                }
+                setShowLockMessage(false)
+                setLocked((locked) => !locked)
+              }}
+            >
+              {locked ? <LockIcon /> : <UnlockIcon />}
+            </button>
+
+            {/* 지도가 렌더링될 실제 요소 */}
+            <div className="map-inner" ref={ref}></div>
+          </>
         )}
-
-        {/* 잠금 해제 버튼 */}
-        <button
-          className={"lock-button" + (locked ? "" : " unlocked")}
-          onClick={() => {
-            if (lockMessageTimeout.current !== null) {
-              clearTimeout(lockMessageTimeout.current)
-            }
-            setShowLockMessage(false)
-            setLocked((locked) => !locked)
-          }}
-        >
-          {locked ? <LockIcon /> : <UnlockIcon />}
-        </button>
-
-        {/* 지도가 렌더링될 실제 요소 */}
-        <div className="map-inner" ref={ref}></div>
       </div>
 
       {/* 내비게이션 앱 연결 버튼 모음 */}

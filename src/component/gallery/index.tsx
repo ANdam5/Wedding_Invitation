@@ -313,6 +313,11 @@ export const Gallery = () => {
     <>
       <LazyDiv className="card gallery">
         <h2 className="english">Gallery</h2>
+        <div className="carousel-hint" aria-label="좌우로 사진을 넘겨보세요">
+          <ArrowLeft className="hint-arrow" />
+          <span>좌우로 넘겨보세요</span>
+          <ArrowLeft className="hint-arrow right" />
+        </div>
         <div className="carousel-wrapper">
           <div
             className="carousel"
@@ -381,7 +386,7 @@ export const Gallery = () => {
           </div>
 
           {/* 하단 인디케이터 (점) */}
-          <div className="carousel-indicator">
+          {/* <div className="carousel-indicator">
             {CAROUSEL_ITEMS.map((_, idx) => (
               <button
                 key={idx}
@@ -391,7 +396,7 @@ export const Gallery = () => {
                 }
               />
             ))}
-          </div>
+          </div> */}
         </div>
 
         <div className="break" />

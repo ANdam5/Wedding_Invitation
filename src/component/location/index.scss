@@ -63,6 +63,14 @@
       height: 100%;
       width: 100%;
     }
+
+    .map-image {
+      display: block;
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+      background-color: var(--alt-bg-color);
+    }
   }
 
   .navigation {

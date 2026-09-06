@@ -23,15 +23,29 @@ export const useNaver = () => {
       return
     }
 
-    // 스크립트가 아직 로드되지 않았으면 동적으로 추가
-    if (!document.querySelector(`script[src="${NAVER_MAP_URL}"]`)) {
-      const script = document.createElement("script")
+    const initializeNaver = () => {
+      const naverSdk = (window as any).naver
+      if (naverSdk) {
+        setNaver(naverSdk)
+      }
+    }
+
+    // SDK가 이미 로드된 경우에는 script 이벤트를 기다리지 않습니다.
+    if ((window as any).naver) {
+      initializeNaver()
+      return
+    }
+
+    let script = document.querySelector<HTMLScriptElement>(
+      `script[src="${NAVER_MAP_URL}"]`,
+    )
+    if (!script) {
+      script = document.createElement("script")
       script.src = NAVER_MAP_URL
       document.head.appendChild(script)
-      script.addEventListener("load", () => {
-        setNaver((window as any).naver)
-      })
     }
+
+    script.addEventListener("load", initializeNaver, { once: true })
   }, [setNaver])
 
   return naver
