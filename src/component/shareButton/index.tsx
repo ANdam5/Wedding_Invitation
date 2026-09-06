@@ -33,6 +33,8 @@ export const ShareButton = () => {
             return
           }
 
+          const shareUrl = new URL(baseUrl, window.location.origin).toString()
+
           // 카카오톡 공유 전송 (초대장 피드 템플릿 사용)
           kakao.Share.sendDefault({
             objectType: KAKAO_SHARE_TYPE,
@@ -44,39 +46,18 @@ export const ShareButton = () => {
               title: `${GROOM_FULLNAME} ❤️ ${BRIDE_FULLNAME}의 결혼식에 초대합니다.`,
               description:
                 WEDDING_DATE.format(WEDDING_DATE_FORMAT) + "\n" + LOCATION,
-              imageUrl:
-                window.location.protocol +
-                "//" +
-                window.location.host +
-                baseUrl +
-                "/preview_image.JPG",
+              imageUrl: new URL("preview_image.JPG", shareUrl).toString(),
               link: {
-                mobileWebUrl:
-                  window.location.protocol +
-                  "//" +
-                  window.location.host +
-                  baseUrl,
-                webUrl:
-                  window.location.protocol +
-                  "//" +
-                  window.location.host +
-                  baseUrl,
+                mobileWebUrl: shareUrl,
+                webUrl: shareUrl,
               },
             },
             buttons: [
               {
                 title: "초대장 보기",
                 link: {
-                  mobileWebUrl:
-                    window.location.protocol +
-                    "//" +
-                    window.location.host +
-                    baseUrl,
-                  webUrl:
-                    window.location.protocol +
-                    "//" +
-                    window.location.host +
-                    baseUrl,
+                  mobileWebUrl: shareUrl,
+                  webUrl: shareUrl,
                 },
               },
             ],
