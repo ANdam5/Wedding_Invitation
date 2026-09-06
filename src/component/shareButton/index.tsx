@@ -49,16 +49,16 @@ export const ShareButton = () => {
                 WEDDING_DATE.format(WEDDING_DATE_FORMAT) + "\n" + LOCATION,
               imageUrl: new URL("preview_image.JPG", shareUrl).toString(),
               link: {
-                mobileWebUrl: shareUrl,
-                webUrl: shareUrl,
+                mobileWebUrl: "https://andam5.github.io/Wedding_Invitation/",
+                webUrl: "https://andam5.github.io/Wedding_Invitation/",
               },
             },
             buttons: [
               {
                 title: "초대장 보기",
                 link: {
-                  mobileWebUrl: shareUrl,
-                  webUrl: shareUrl,
+                  mobileWebUrl: "https://andam5.github.io/Wedding_Invitation/",
+                  webUrl: "https://andam5.github.io/Wedding_Invitation/",
                 },
               },
             ],
