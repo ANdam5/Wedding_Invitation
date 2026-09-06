@@ -11,6 +11,12 @@ export const NAVER_MAP_CLIENT_ID = import.meta.env.VITE_NAVER_MAP_CLIENT_ID
 export const KAKAO_SDK_JS_KEY = import.meta.env.VITE_KAKAO_SDK_JS_KEY
 
 /**
+ * 카카오톡 공유에 사용할 실제 배포 주소
+ * .env 파일의 VITE_SHARE_URL에서 가져옵니다.
+ */
+export const SHARE_URL = import.meta.env.VITE_SHARE_URL
+
+/**
  * 백엔드 서버 URL (방명록 기능 등에 사용)
  * .env 파일의 VITE_SERVER_URL에서 가져옵니다.
  */

@@ -8,6 +8,7 @@ import {
   WEDDING_DATE_FORMAT,
 } from "../../const"
 import ktalkIcon from "../../icons/ktalk-icon.png"
+import { SHARE_URL } from "../../env"
 import { LazyDiv } from "../lazyDiv"
 import { useKakao } from "../store"
 
@@ -33,7 +34,7 @@ export const ShareButton = () => {
             return
           }
 
-          const shareUrl = new URL(baseUrl, window.location.origin).toString()
+          const shareUrl = SHARE_URL || new URL(baseUrl, window.location.origin).toString()
 
           // 카카오톡 공유 전송 (초대장 피드 템플릿 사용)
           kakao.Share.sendDefault({
