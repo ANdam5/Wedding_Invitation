@@ -43,6 +43,7 @@ export const ShareButton = () => {
               address: SHARE_ADDRESS,
               addressTitle: SHARE_ADDRESS_TITLE,
             }),
+            buttonTitle: "초대장 보기",
             content: {
               title: `${GROOM_FULLNAME} ❤️ ${BRIDE_FULLNAME}의 결혼식에 초대합니다.`,
               description:
@@ -53,15 +54,6 @@ export const ShareButton = () => {
                 webUrl: "https://andam5.github.io/Wedding_Invitation/",
               },
             },
-            buttons: [
-              {
-                title: "초대장 보기",
-                link: {
-                  mobileWebUrl: "https://andam5.github.io/Wedding_Invitation/",
-                  webUrl: "https://andam5.github.io/Wedding_Invitation/",
-                },
-              },
-            ],
           })
         }}
       >
