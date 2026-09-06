@@ -32,7 +32,7 @@ export const HOLIDAYS = [1]
 /**
  * 예식 장소 명칭
  */
-export const LOCATION = "국방컨벤션 에메랄드홀"
+export const LOCATION = "국방컨벤션"
 
 /**
  * 예식 장소 상세 주소

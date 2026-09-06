@@ -13,6 +13,9 @@ import { useKakao } from "../store"
 
 const baseUrl = import.meta.env.BASE_URL
 
+// "feed": 초대장 카드, "location": 위치 카드
+const KAKAO_SHARE_TYPE: "feed" | "location" = "feed"
+
 /**
  * 카카오톡으로 초대장을 공유할 수 있는 버튼 컴포넌트입니다.
  *
@@ -30,11 +33,13 @@ export const ShareButton = () => {
             return
           }
 
-          // 카카오톡 공유 전송 (위치 기반 템플릿 사용)
+          // 카카오톡 공유 전송 (초대장 피드 템플릿 사용)
           kakao.Share.sendDefault({
-            objectType: "location",
-            address: SHARE_ADDRESS,
-            addressTitle: SHARE_ADDRESS_TITLE,
+            objectType: KAKAO_SHARE_TYPE,
+            ...(KAKAO_SHARE_TYPE === "location" && {
+              address: SHARE_ADDRESS,
+              addressTitle: SHARE_ADDRESS_TITLE,
+            }),
             content: {
               title: `${GROOM_FULLNAME} ❤️ ${BRIDE_FULLNAME}의 결혼식에 초대합니다.`,
               description:
