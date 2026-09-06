@@ -94,7 +94,7 @@ export const BRIDE_INFO = [
     relation: "신부 어머니",
     name: BRIDE_MOTHER,
     phone: "010-9967-7424",
-    account: "국민은행 081010385531",
+    account: "신한은행 110247716027",
   },
 ]
 
