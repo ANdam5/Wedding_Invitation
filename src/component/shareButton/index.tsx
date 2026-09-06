@@ -54,6 +54,16 @@ export const ShareButton = () => {
                 webUrl: "https://andam5.github.io/Wedding_Invitation/",
               },
             },
+            buttons: [
+              {
+                title: "초대장 보기",
+                link: {
+                  mobileWebUrl:
+                    "https://andam5.github.io/Wedding_Invitation/",
+                  webUrl: "https://andam5.github.io/Wedding_Invitation/",
+                },
+              },
+            ],
           })
         }}
       >
