@@ -32,6 +32,12 @@ import image30 from "./image30.JPG"
 import image31 from "./image31.JPG"
 import image32 from "./image32.JPG"
 import image33 from "./image33.JPG"
+import image34 from "./image34.JPG"
+import image35 from "./image35.JPG"
+import image36 from "./image36.JPG"
+import image37 from "./image37.JPG"
+import image38 from "./image38.JPG"
+
 
 /**
  * 메인 커버 이미지
@@ -74,5 +80,10 @@ export const GALLERY_IMAGES = [
   image30,
   image31,
   image32,
-  image33
+  image33,
+  image34,
+  image35,
+  image36,
+  image37,
+  image38
 ]
